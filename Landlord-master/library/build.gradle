@@ -16,3 +16,55 @@ android {
 dependencies {
     implementation 'com.pnikosis:materialish-progress:1.0'
 }
+
+//////// 打包发布配置开始 ////////
+
+apply plugin: 'maven'
+
+ext {
+
+// 从Github上clone下来的项目的本地地址
+
+//这里指定的就是刚刚新建项目后clone下来的在本地的路径
+
+    GITHUB_REPO_PATH = "E:/Note/maven.git/trunk"
+
+    PUBLISH_GROUP_ID = 'com.heshicaihao'
+
+    PUBLISH_ARTIFACT_ID = 'sweetalert'
+
+    PUBLISH_VERSION = '0.0.0'
+}
+
+uploadArchives {
+
+    repositories.mavenDeployer {
+
+        def deployPath = file(project.GITHUB_REPO_PATH)
+
+        repository(url: "file://${deployPath.absolutePath}")
+
+        pom.project {
+
+            groupId project.PUBLISH_GROUP_ID
+
+            artifactId project.PUBLISH_ARTIFACT_ID
+
+            version project.PUBLISH_VERSION
+
+        }
+    }
+}
+
+// 源代码一起打包
+task androidSourcesJar(type: Jar) {
+
+classifier = 'sources'
+
+from android.sourceSets.main.java.sourceFiles
+}
+
+artifacts {
+
+    archives androidSourcesJar
+}
