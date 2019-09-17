@@ -2,3 +2,6 @@
 /Landlord-master/.idea
 /Landlord-master/Landlord-master.iml
 /Landlord-master/library/build
+/Landlord-master/app/build
+/Landlord-master/app/*.iml
+/Landlord-master/local.properties
