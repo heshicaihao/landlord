@@ -30,4 +30,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     implementation 'com.heshicaihao:sweetalert:0.0.0'
+    implementation 'com.heshicaihao:poker:0.0.0'
 }
